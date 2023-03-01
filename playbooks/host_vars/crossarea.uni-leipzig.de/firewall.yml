@@ -1,6 +1,6 @@
 ---
 firewall_allowed_tcp_ports:
   - "22"
-  - "2222" # obfuscated SSH
+  - "2222"  # obfuscated SSH
   - "80"
   - "443"

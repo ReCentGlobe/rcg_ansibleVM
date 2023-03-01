@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  become: True
+  become: true
   vars_files:
     - group_vars/all/main.yml
   pre_tasks:
@@ -10,7 +10,7 @@
           - htop
           - dstat
           - ncdu
-        update_cache: yes
+        update_cache: true
   roles:
     - geerlingguy.docker
     - common

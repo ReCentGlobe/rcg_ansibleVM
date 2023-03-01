@@ -1,6 +1,6 @@
 ---
 - name: install dependencies
-  become: yes
+  become: true
   package:
     name: "{{ item }}"
     state: present
@@ -8,14 +8,14 @@
     - fonts-powerline #spaceship-prompt dep
 
 - name: install zsh autosuggestions
-  become: yes
+  become: true
   become_user: "{{ username }}"
   git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
     dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
 - name: update .zshrc plugins
-  become: yes
+  become: true
   become_user: "{{ username }}"
   lineinfile:
     path: ~/.zshrc
@@ -23,14 +23,14 @@
     line: 'plugins=(git zsh-autosuggestions)'
 
 - name: install zsh spaceship prompts
-  become: yes
+  become: true
   become_user: "{{ username }}"
   git:
     repo: https://github.com/denysdovhan/spaceship-prompt.git
     dest: ~/.oh-my-zsh/custom/themes/spaceship-prompt
 
 - name: symlink spaceship-prompts theme
-  become: yes
+  become: true
   become_user: "{{ username }}"
   file:
     src: ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme
@@ -38,7 +38,7 @@
     state: link
 
 - name: update .zshrc theme
-  become: yes
+  become: true
   become_user: "{{ username }}"
   lineinfile:
     path: ~/.zshrc
@@ -46,14 +46,14 @@
     line: 'ZSH_THEME="spaceship"'
 
 - name: install zsh syntax highlighting
-  become: yes
+  become: true
   become_user: "{{ username }}"
   git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
     dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 - name: update .zshrc plugins
-  become: yes
+  become: true
   become_user: "{{ username }}"
   lineinfile:
     path: ~/.zshrc
