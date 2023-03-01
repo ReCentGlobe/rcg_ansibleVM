@@ -6,7 +6,7 @@
       "matchCurrentVersion": "!/^0/",
       "automerge": true,
       "description": "Automatically merge minor and patch-level updates",
-      "automergeType": "branch",
+      "automergeType": "branch"
     }
   ]
 }
