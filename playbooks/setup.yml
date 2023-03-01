@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: True
+  vars_files:
+    - group_vars/all/main.yml
+  pre_tasks:
+    - name: Update package cache and install admin tools
+      apt:
+        name:
+          - htop
+          - dstat
+          - ncdu
+        update_cache: yes
+  roles:
+    - geerlingguy.docker
+    - common
+    - zsh
+    - geerlingguy.firewall
+    - geerlingguy.security
+    - geerlingguy.pip
+    - weareinteractive.apt

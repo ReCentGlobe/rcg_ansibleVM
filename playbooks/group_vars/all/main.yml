@@ -1,0 +1,8 @@
+---
+password: "{{ vault_ansible_password | password_hash('sha512') }}"
+public_key: "{{ lookup('file', '/Users/ffoerster/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/PublicKeys/9c67eef9a0f0ccc3918becd4cec87c32.pub') }}"
+username: ffoerster
+aliases_path: /path/to/aliases
+
+security_ssh_port: 2222
+security_ssh_password_authentication: "yes"

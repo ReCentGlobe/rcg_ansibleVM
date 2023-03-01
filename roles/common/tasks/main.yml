@@ -1,0 +1,40 @@
+---
+- name: Ensure group "recentglobe" exists
+  ansible.builtin.group:
+    name: recentglobe
+    state: present
+
+- name: "add user: {{ username }}"
+  become: yes
+  become_method: sudo
+  user:
+    name: "{{ username }}"
+    password: "{{ password }}"
+    groups:
+      - sudo
+      - docker
+      - recentglobe
+    state: present
+
+- name: add public key
+  authorized_key:
+    user: "{{ username }}"
+    key: "{{ public_key }}"
+
+- name: apt update
+  apt:
+    update_cache: true
+
+- name: install dependencies
+  become: yes
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - aptitude
+    - git
+    - tmux
+    - htop
+    - dstat
+    - acl
+    - python3-pip
